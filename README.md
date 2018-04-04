@@ -60,3 +60,55 @@ This is not a mandatory step. In fact, sometime the project itself may be small 
 
 ### List all Tasks and Organize Yourself
 Once you have the sketches done, divide them into small pieces and mark some milestones that have to be achieved to make your app work as planned (also don’t forget to meet specifications given in the rubric). Set yourself some partial deadlines and look how you progress! In addition, you can make some intermediate tests just to make sure you are achieving what you have proposed. Don't forget to run your app and check for any potential errors whenever you implement any new feature (like network calls, database connectivity etc).
+
+## Start Coding: Build the Structure of Your First Activity
+>[**Activity**](https://developer.android.com/reference/android/app/Activity.html) - _The single focused thing that the user can do_.  - Developer Android Guide
+
+Whether your App will display a List of Views or a complex Constraint Layout, it needs a simple structure. No need to focus too much on the details right now. Just a few Views that will display the result you’re going to achieve with the functionality. 
+
+Design the first Activity by selecting your root layout with all needed nested Views. 
+
+### Root Layout
+* **[FrameLayout](https://developer.android.com/reference/android/widget/FrameLayout.html)** - great for simple layouts when the layout needs to hold a single Child View. You can, however, add multiple children to a FrameLayout and control their position by assigning gravity to each child
+* **[LinearLayout](https://developer.android.com/reference/android/widget/LinearLayout.html)** - great for displaying Views horizontally or vertically one after another. It is also perfect for breaking up the display proportionally
+* **[RelativeLayout](https://developer.android.com/reference/android/widget/RelativeLayout.html)** - great for positioning Views relative to each other 
+* **[ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html)** - a bit more complicated, but has great features for building complex UIs with multiple Views that are positioned relative to the parent, or the sibling View.
+
+### ListView | GridView | RecyclerView  
+* **[ListView](https://developer.android.com/reference/android/widget/ListView.html)** - it allows to create just the vertical-scrolling list of elements. The list items are automatically inserted to the list using an Adapter that pulls content from a source such as an array or database query and converts each item result into a view that's placed into the list. To display a more custom view for each item in your dataset, implement a ListAdapter
+  * [Tutorial](https://www.thedroidsonroids.com/blog/how-to-implement-a-listview)
+* **[GridView](https://developer.android.com/reference/android/widget/GridView.html)** - is a ListView example for displaying the Views into a Grid. We use this again by setting up a ListAdapter to feed the views with data
+  * [Tutorial](https://www.raywenderlich.com/127544/android-gridview-getting-started)
+* **[RecyclerView](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html)** - can display a list of Views vertically, horizontally or into a grid. It’s more efficient by default, the layout is separated and they have more possibilities over the data set inside the adapter. The LayoutManager is responsible for layouting row views. For horizontal and vertical lists is more suitable the [LinearLayoutManager](https://developer.android.com/reference/android/support/v7/widget/LinearLayoutManager.html), for grids - the [GridLayoutManager](https://developer.android.com/reference/android/support/v7/widget/GridLayoutManager.html)
+  * [Tutorial](https://www.thedroidsonroids.com/blog/how-to-implement-a-recyclerview)
+
+## Build an Adapter to Display Data to the UI
+### **[Adapter](https://developer.android.com/reference/android/widget/Adapter.html)**
+ - Create a separate Adapter class that extends from `RecyclerView.Adapter` (for RV) or `ArrayAdapter` (LV) depending on the list views used for displaying data
+### ListView
+- Add a constructor initializing the context and the list of model object
+- Override the `getView()` method in the class and inflate the layout created for the list item
+- Populate the UI components (TextViews, ImageViews .. etc) with the data retrieved from the getter methods of the model class (POJO)
+- [Tutorial](https://www.raywenderlich.com/124438/android-listview-tutorial)
+### RecyclerView
+- Add a constructor initializing the context, any listeners and the list of model object
+- Create an inner or separate `ViewHolder` class that gets the references of the UI components
+- Override 3 methods in the Adapter class
+  - `onCreateViewHolder()` - inflate the list item view here
+  - `onBindViewHolder()` - bind the data to UI components here
+  - `getItemCount()` - return the list size here
+- [Tutorial](http://www.vogella.com/tutorials/AndroidRecyclerView/article.html)
+
+## Optional
+---
+
+## Work with the API
+- Get yourself familiar with the API you’re going to use for your app (read the documentation)
+- Try some query urls directly into the browser, and “translate” the answer into a readable JSON format ([jsonformatter](https://jsonformatter.curiousconcept.com/), [jsonprint](http://jsonprettyprint.com/)) to know in what manner your app is going to receive the data (if there are Arrays, Objects, Strings, etc.) 
+- Decide how many endpoints you will have to call for your queries 
+
+## Make Calls to the API
+- Add Internet permissions
+ ``` xml 
+<uses-permission android:name="android.permission.INTERNET" /> 
+```
