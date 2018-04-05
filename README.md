@@ -25,8 +25,8 @@
   - [Use a 3rd party library](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#use-a-3rd-party-library)
 - [**Perform Network Requests Asynchronously**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#perform-network-requests-asynchronously)
   - [AsyncTask](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#asynctaskparams-progress-result)
-  - []()
-- []()
+  - [AsyncTaskLoader](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#AsyncTaskLoader-d)
+- [**Build Models for Your Data**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#build-models-for-your-data)
 
 
 ## Notes from the Authors
@@ -180,3 +180,43 @@ It is best used for short and interruptible tasks, tasks that don't need to repo
    - [`onPostExecute(Result)`](https://developer.android.com/reference/android/os/AsyncTask.html#onPostExecute(Result)) - is run on the UI thread after the background computation is finished.
 
    The above methods are defined in a subclass of `AsyncTask`. To execute the task, you instantiate the class on the UI thread and call `execute()` on the instance, passing in the corresponding `Params/Progress/Result` parameters. 
+
+### `AsyncTaskLoader<D>`  
+_e.g._ `AsyncTaskLoader<ArrayList<Car>>`
+It is a _subclass of the Loader framework_, using an `AsyncTask` to do the request on a background thread.
+
+  With [Loaders](https://developer.android.com/guide/components/loaders.html), the data is preserved following device configuration changes and when the activity is permanently destroyed, the Loader is destroyed with it, with no remaining tasks consuming system resources (as opposed to `AsyncTask`).
+
+  The [LoaderManager](https://developer.android.com/reference/android/support/v4/app/LoaderManager.html) class is used to manage one or more Loader instances within an activity or fragment. In an activity’s `onCreate` method, you initialize a loader and make it active by calling `getSupportLoaderManager()`, when using the Support Library:
+  ``` 
+  getSupportLoaderManager().initLoader(int id, Bundle args, LoaderCallbacks<D> callback)
+```
+
+-  **A Loader takes in 3 parameters:**
+   - A unique loader ID
+   - Optional arguments to supply to the loader at construction, in form of a `Bundle`.
+   - A `LoaderCallbacks` implementation, which the `LoaderManager` calls to report loader events. When the local class implements the [`LoaderManager.LoaderCallbacks`](https://developer.android.com/reference/android/support/v4/app/LoaderManager.LoaderCallbacks.html) interface, it passes a reference to itself: `this`.
+
+- The **`LoaderCallbacks` implementation** requires to override 3 methods:
+   - [`onCreateLoader(int id, Bundle args)`](https://developer.android.com/reference/android/support/v4/app/LoaderManager.LoaderCallbacks.html#onCreateLoader(int,%20android.os.Bundle)) - where you implement the code to instantiate and return a new loader with the given ID, ready to start loading.
+  - [`onLoadFinished(Loader<D>, D data)`](https://developer.android.com/reference/android/support/v4/app/LoaderManager.LoaderCallbacks.html#onLoadFinished(android.support.v4.content.Loader%3CD%3E,%20D)) - where the data is moved to UI. 
+  - [`onLoaderReset(Loader<D> loader)`](https://developer.android.com/reference/android/support/v4/app/LoaderManager.LoaderCallbacks.html#onLoaderReset(android.support.v4.content.Loader%3CD%3E)) - where you reset a previously created loader and invalidate its data.
+
+- To **create a subclass of `AsyncTaskLoader`**, you need to:
+  - Set a class that **`extends AsyncTaskLoader<D>`**, where D is the data type of the data you are loading
+  - Override the `loadInBackground()` method with D as a return type. (This method is similar to the `doInBackground()` method of the `AsyncTask`.) The results are automatically passed on to the `onLoadFinished()` callback.
+
+## Build Models for Your Data 
+_Create Custom Classes for your Custom Objects_
+_(used for data from API and for internal data)_
+
+Custom Java Classes are critical to every object-oriented program you will build going forward. It is vital to be able to think about how to design objects that interact with each other and model real-world concepts. A Plain Old Java Object (POJO) is a class that holds data for an item like name and other details. In each Model Class there are member variables and mainly three methods:
+
+- **Variables** - create variables as needed to define the object and set data to adapters and the UI
+- **Constructor** - every java object has a Constructor, if not Java assigns an empty one. The constructor is the connection between the Adapter and the model
+- **Getters** - methods for getting data of any property
+- **Setters** - methods for setting data of any property
+
+There are ways of automatically generating model classes from JSON responses like:
+- [Json Schema](http://www.jsonschema2pojo.org/)
+- [Pojo Library](http://pojo.sodhanalibrary.com/)
