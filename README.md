@@ -1,14 +1,41 @@
 # Beginner's Guide to Build Project from Scratch
 
+## Table of Content
+- [**Notes from the Authors**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#notes-from-the-authors)
+- [**Collect all Requirements**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#collect-all-requirements)
+- [**Ask Yourself a few Questions**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#ask-yourself-a-few-questions)
+  - [App structure](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#app-structure)
+  - [UI/UX](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#uiux)
+- [**Before you start coding**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#before-you-start-coding)
+  - [Plan Your App Structure](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#plan-your-app-structure)
+  - [Look for Inspiration](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#look-for-inspiration)
+  - [Revisit Those Questions and Ask Yourself a Few More](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#revisit-those-questions-and-ask-yourself-a-few-more)
+  - [Finalize Your App Structure](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#finalize-your-app-structure)
+  - [List all Tasks and Organize Yourself](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#list-all-tasks-and-organize-yourself)
+- [**Start Coding: Build the Structure of Your First Activity**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#start-coding-build-the-structure-of-your-first-activity)
+  - [Root Layout](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#root-layout)
+  - [ListView | GridView | RecyclerView](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#listview--gridview--recyclerview)
+- [**Build an Adapter to Display Data to the UI**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#build-an-adapter-to-display-data-to-the-ui)
+  - [Adapter](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#adapter)
+  - [ListView](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#listview)
+  - [RecyclerView](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#recyclerview)
+- [**Work with the API**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#work-with-the-api)
+- [**Make Calls to the API**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#make-calls-to-the-api)
+  - [Make Network Calls without a Library](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#make-network-calls-without-a-library)
+  - [Use a 3rd party library](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#use-a-3rd-party-library)
+- [**Perform Network Requests Asynchronously**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#perform-network-requests-asynchronously)
+  - [AsyncTask](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#asynctaskparams-progress-result)
+  - []()
+- []()
+
+
 ## Notes from the Authors
 This document, created by **Student Leaders** in the _AND_ track, is a collection of general guidelines, useful for when we have to start building an Android Project from scratch. Please, note that these guidelines are not mandatory, but just suggestions, and are based on the Student Leaders’ experience. Everything in the document can be improved, and if you have any suggestion we **want** to hear it. 
 
 What we are trying to face here is the moment when, after we’re asked to build an Android Project, we have to actually do it! This is an important moment, because here is where everything starts and where everything needs to be approached. It may seem all impossible to face, but keep in mind that every project is different, so you always have to follow the guidelines you’re given (if any). 
 
 ### Authors 
-TODO: Update with the right GitHub names
-
-Lauren Moineau (@Lauren_M), Henna Singh ([@hennasingh](https://github.com/hennasingh)), Gregorio Palamà (@gregoriopalama ), Iva Ivanova (@fif.iva), Cristina Mangana (@cristina.mangana)
+Lauren Moineau ([@ellemwano](https://github.com/ellemwano)), Henna Singh ([@hennasingh](https://github.com/hennasingh)), Gregorio Palamà ([@gregoriopalama](https://github.com/gregoriopalama)), Iva Ivanova ([@fireflyfif](https://github.com/fireflyfif)), Cristina Mangana (@cristina.mangana)
 
 ## Collect all Requirements
 Every time you are about to build a new App from scratch, it is because someone asked for it, be it a simple prototype project or a big application. But that’s not all. When somebody asks for a new App, you’re given a full list of requirements. Usually, they are functional requirements, such as “my App should show a list of events” or “my App should notify me when something happens”, but requirements can also be technical. For example, we can receive the request to save some data locally in a database, or remotely, in a remote database, or we could be asked to use a remote API. 
@@ -99,9 +126,8 @@ Design the first Activity by selecting your root layout with all needed nested V
   - `getItemCount()` - return the list size here
 - [Tutorial](http://www.vogella.com/tutorials/AndroidRecyclerView/article.html)
 
-## Optional
 ---
-
+## Optional
 ## Work with the API
 - Get yourself familiar with the API you’re going to use for your app (read the documentation)
 - Try some query urls directly into the browser, and “translate” the answer into a readable JSON format ([jsonformatter](https://jsonformatter.curiousconcept.com/), [jsonprint](http://jsonprettyprint.com/)) to know in what manner your app is going to receive the data (if there are Arrays, Objects, Strings, etc.) 
@@ -122,7 +148,6 @@ Design the first Activity by selecting your root layout with all needed nested V
   - Extract data from the JSON
 
 ### Use a 3rd party library. 
-(the image won’t work, I have to add it later)
 Which library should I use?	
 - [Comparison of a few libraries](https://stackoverflow.com/questions/16902716/comparison-of-android-networking-libraries-okhttp-retrofit-and-volley/18863395#18863395) - [Retrofit](http://square.github.io/retrofit/), [OkHttp](http://square.github.io/okhttp/), [Volley](https://developer.android.com/training/volley/index.html), any other preference
 ![Library Comparison](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide/blob/master/3u6s6.png)
