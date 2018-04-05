@@ -112,3 +112,46 @@ Design the first Activity by selecting your root layout with all needed nested V
  ``` xml 
 <uses-permission android:name="android.permission.INTERNET" /> 
 ```
+
+### Make Network Calls without a Library
+- Build URL and make Network calls as done in the course exercises:
+  - **Network calls** (build URL, etc): 
+  - From the url, open an http connection 
+  - Get an Input Stream from the opened connection
+  - Read the contents of the Input Stream (scanner). This allocates and deallocates the buffers as needed and handles character encoding. The data delivered from the request url is in JSON format.
+  - Extract data from the JSON
+
+### Use a 3rd party library. 
+(the image won’t work, I have to add it later)
+Which library should I use?	
+- [Comparison of a few libraries](https://stackoverflow.com/questions/16902716/comparison-of-android-networking-libraries-okhttp-retrofit-and-volley/18863395#18863395) - [Retrofit](http://square.github.io/retrofit/), [OkHttp](http://square.github.io/okhttp/), [Volley](https://developer.android.com/training/volley/index.html), any other preference
+![3u6s6|689x192](upload://ohEB1F4eTMRcOHJePZKqc3ExygQ.png)
+- Add needed Gradle dependencies for libraries and JSON converters if any
+- Check how to perform a request on a background thread
+- Check for successful connection or failures, put any needed information in a toast or dialog to display to the user.
+- Create model java objects (POJO) for mapping the received data
+- Check for null values and set data to the custom adapters created, and then add data to the UI from the adapters as needed
+
+## Perform Network Requests Asynchronously 
+_In case you're not using any 3rd parties Libraries_ 
+
+A network request can take a few seconds to complete so are considered long-running operations. When executed on the main (UI) thread (**synchronous request**), this would "freeze" the screen until the process is finished. You will have a very unhappy user.
+
+To prevent this bad user experience, a `NetworkOnMainThreadException` (making the app crash) is automatically generated whenever a Network call is attempted on the UI thread.
+Also, when the UI thread of the app is blocked for at least 5 sec, an _Application Not Responding_ (ANR) error is triggered. 
+
+All of this is designed to force you to perform an **Asynchronous Network Request**, on a background thread which on completion will display results to UI.
+
+This can be done using an [`AsyncTask`](https://developer.android.com/reference/android/os/AsyncTask.html) or an [`AsyncTaskLoader`](https://developer.android.com/reference/android/content/AsyncTaskLoader.html). You can also take a look at this [link](https://nayaneshguptetechstuff.wordpress.com/2014/06/21/asynctask-vs-loaders-why-loaders-are-introduced/) (one of many) that describes the advantages of one over the another. Based on the use-case of your app, you can decide which one is the best to use.
+
+### `AsyncTask<Params, Progress, Result>` 
+_e.g._  `AsyncTask <String, Void, String>`
+It is best used for short and interruptible tasks, tasks that don't need to report back to UI or user or low-priority tasks that can be left unfinished. 
+
+**There are 4 basic steps**:
+   - [`onPreExecute()`](https://developer.android.com/reference/android/os/AsyncTask.html#onPreExecute()) - is invoked on the UI thread before the Task is executed
+   - [`doInBackground(Params...)`](https://developer.android.com/reference/android/os/AsyncTask.html#doInBackground(Params...)) - is executed  immediately after `onPreExecute()` finishes. This step performs a background computation (like fetching JSON data from API), returns a result, and passes the result to `onPostExecute()`.
+   - [`onProgressUpdate(Progress...)`](https://developer.android.com/reference/android/os/AsyncTask.html#onProgressUpdate(Progress...)) - (optional) to report any form of progress to the UI thread while the background process is executing. 
+   - [`onPostExecute(Result)`](https://developer.android.com/reference/android/os/AsyncTask.html#onPostExecute(Result)) - is run on the UI thread after the background computation is finished.
+
+   The above methods are defined in a subclass of `AsyncTask`. To execute the task, you instantiate the class on the UI thread and call `execute()` on the instance, passing in the corresponding `Params/Progress/Result` parameters. 
