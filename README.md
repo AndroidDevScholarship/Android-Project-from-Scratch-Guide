@@ -35,7 +35,7 @@ This document, created by **Student Leaders** in the _AND_ track, is a collectio
 What we are trying to face here is the moment when, after we’re asked to build an Android Project, we have to actually do it! This is an important moment, because here is where everything starts and where everything needs to be approached. It may seem all impossible to face, but keep in mind that every project is different, so you always have to follow the guidelines you’re given (if any). 
 
 ### Authors 
-Lauren Moineau ([@ellemwano](https://github.com/ellemwano)), Henna Singh ([@hennasingh](https://github.com/hennasingh)), Gregorio Palamà ([@gregoriopalama](https://github.com/gregoriopalama)), Iva Ivanova ([@fireflyfif](https://github.com/fireflyfif)), Cristina Mangana (@cristina.mangana)
+Lauren Moineau ([@ellemwano](https://github.com/ellemwano)), Henna Singh ([@hennasingh](https://github.com/hennasingh)), Gregorio Palamà ([@gregoriopalama](https://github.com/gregoriopalama)), Iva Ivanova ([@fireflyfif](https://github.com/fireflyfif)), Cristina Mangana ([@cristina-mangana](https://github.com/cristina-mangana))
 
 ## Collect all Requirements
 Every time you are about to build a new App from scratch, it is because someone asked for it, be it a simple prototype project or a big application. But that’s not all. When somebody asks for a new App, you’re given a full list of requirements. Usually, they are functional requirements, such as “my App should show a list of events” or “my App should notify me when something happens”, but requirements can also be technical. For example, we can receive the request to save some data locally in a database, or remotely, in a remote database, or we could be asked to use a remote API. 
