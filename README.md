@@ -25,7 +25,7 @@
   - [Use a 3rd party library](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#use-a-3rd-party-library)
 - [**Perform Network Requests Asynchronously**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#perform-network-requests-asynchronously)
   - [AsyncTask](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#asynctaskparams-progress-result)
-  - [AsyncTaskLoader](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#AsyncTaskLoader-d)
+  - [AsyncTaskLoader](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#AsyncTaskLoaderd)
 - [**Build Models for Your Data**](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide#build-models-for-your-data)
 
 
