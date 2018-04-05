@@ -125,7 +125,7 @@ Design the first Activity by selecting your root layout with all needed nested V
 (the image won’t work, I have to add it later)
 Which library should I use?	
 - [Comparison of a few libraries](https://stackoverflow.com/questions/16902716/comparison-of-android-networking-libraries-okhttp-retrofit-and-volley/18863395#18863395) - [Retrofit](http://square.github.io/retrofit/), [OkHttp](http://square.github.io/okhttp/), [Volley](https://developer.android.com/training/volley/index.html), any other preference
-![3u6s6|689x192](upload://ohEB1F4eTMRcOHJePZKqc3ExygQ.png)
+![Library Comparison](https://github.com/AndroidDevScholarship/Project-from-Scratch-Guide/blob/master/3u6s6.png)
 - Add needed Gradle dependencies for libraries and JSON converters if any
 - Check how to perform a request on a background thread
 - Check for successful connection or failures, put any needed information in a toast or dialog to display to the user.
