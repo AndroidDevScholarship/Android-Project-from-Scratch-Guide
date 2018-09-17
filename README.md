@@ -1,4 +1,4 @@
-# Beginner's Guide to Build Project from Scratch
+# Beginner's Guide to Building a Project from Scratch
 ### Android Development
 
 ## Table of Content
